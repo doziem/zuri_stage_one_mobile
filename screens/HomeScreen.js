@@ -16,7 +16,7 @@ const HomeScreen = () => {
                     <Text style={{
                         textAlign: 'center', color: '#fff',
                         backgroundColor: '#fc500d',
-                        paddingVertical: 10,
+                        paddingVertical: 14,
                         borderRadius: 8
 
                     }}> Open GitHub </Text>
@@ -39,9 +39,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     displayName: {
-        fontSize: 32,
-        marginBottom: 10
-        // fontWeight: 700
+        fontSize: 33,
+        marginBottom: 10,
+        fontWeight: 'bold',
+        color: '#071e22'
     },
     img: {
         // flex:1,

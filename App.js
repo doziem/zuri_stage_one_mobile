@@ -1,14 +1,32 @@
 
-import { SafeAreaView, } from 'react-native';
+import { SafeAreaView, View, } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import HomeScreen from './screens/HomeScreen';
 import WebViewScreen from './screens/WebViewScreen';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { useCallback } from 'react';
 
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
 
-  const Stack = createNativeStackNavigator();
+  const [fontsLoaded] = useFonts({
+    'bold': require('./assets/fonts/DMSans-Bold.ttf'),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
 
   return (
     <>
@@ -19,7 +37,11 @@ export default function App() {
               headerTitle: ""
             }}
           />
-          <Stack.Screen name="WebView" component={WebViewScreen} />
+          <Stack.Screen name="WebView" component={WebViewScreen}
+            options={{
+              headerTitle: "Stage one Source Code"
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

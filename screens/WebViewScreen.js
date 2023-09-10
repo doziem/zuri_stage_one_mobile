@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useRef } from 'react'
 import WebView from 'react-native-webview'
+import LoadingIndicatorView from '../components/LoadingIndicatorView';
 
 const WebViewScreen = () => {
     const webviewRef = useRef(null);
@@ -15,7 +16,7 @@ const WebViewScreen = () => {
         <View style={{ flex: 1 }}>
             <WebView
                 source={{ uri: 'https://github.com/doziem/zuri_stage_one_mobile' }}
-                style={{ marginTop: 20 }}
+                renderLoading={LoadingIndicatorView}
                 startInLoadingState={true}
                 ref={webviewRef}
             />
